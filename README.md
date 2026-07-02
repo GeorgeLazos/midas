@@ -94,27 +94,6 @@ Data, models and results are mounted as volumes, so outputs persist on the host.
 
 API keys (Alpha Vantage, Finnhub, NewsAPI, Tiingo) go in a `.env` file — never committed. Docker Compose loads it automatically.
 
-## Repository structure
-
-```
-Dockerfile        # container image (Python + JDK for PySpark)
-docker-compose.yml
-config/           # tickers, date ranges, hyperparameters
-data/             # raw and processed data (gitignored)
-src/data/         # Layer 0 — data loaders
-src/experts/      # Layer 1 — expert signal layer
-src/agents/       # Layer 2 — per-class SAC agents + VSNs
-src/aggregation/  # Layer 3
-src/manager/      # Layer 4 — manager agent
-src/constraints/  # Layer 5
-src/execution/    # Layer 6 — backtest execution
-src/benchmarks/   # Markowitz and 1/N baselines
-src/evaluation/   # metrics and statistical tests
-notebooks/        # exploration and figures
-models/           # saved checkpoints (gitignored)
-results/          # figures and tables
-```
-
 ## Related work
 
 MIDAS builds on recent hierarchical RL portfolio frameworks:
